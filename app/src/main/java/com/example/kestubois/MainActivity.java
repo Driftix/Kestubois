@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity implements InterfaceControll
     ListView mListView;
     Singleton singleton;
     String[] waitingTabCocktails = new String[]{"Pending..."};
-    String url = "http://192.168.43.55/volley_serv/listeCocktail.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements InterfaceControll
         setContentView(R.layout.activity_main);
         //Initialisation du Singleton
         Singleton.initInstance();
-        //JSON parser permet de construire les objects cocktail a mettre dans le singleton à partir de la BDD
+        //JSON parser permet de construire les objects cocktail à partir d'une requête http
         JSONParser jsonParser = new JSONParser(this, this);
         this.singleton = Singleton.getInstance();
 
@@ -43,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements InterfaceControll
         }
     }
 
+    //Fonction onLoad provenant de notre interface (Est executé une fois que la fonction async de la requête http est effectuée)
     @Override
     public void onLoad() {
         //Récupération de tout les cocktails ajoutés au singleton
@@ -57,15 +57,15 @@ public class MainActivity extends AppCompatActivity implements InterfaceControll
         mListView = (ListView) findViewById(R.id.LISTE_cocktail);       // Récupération de l'ID de l'élément
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, tabCockTails2);
         mListView.setAdapter(adapter);
-
+        //On replalce des events sur chacun des items de la liste
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Toast.makeText(MainActivity.this, "Bien joué", Toast.LENGTH_SHORT).show();
-                Object monCocktail = mListView.getItemAtPosition(position);     // Déclaration d'un object qui récupère la position (l'élément de la liste)
-                // String unNomCocktail = monCocktail.toString();      //Changement en type "caractère" (String)
-                Intent intent = new Intent(MainActivity.this, PageCocktail.class);     // Déclaration d'une fenêtre (Intent)
-                //intent.putExtra("NomDeCocktail", unNomCocktail);     // Passage en paramètre à retourner (le nom du cocktail (PutExtra))
+                // Déclaration d'un object qui récupère la position (l'élément de la liste)
+                Object monCocktail = mListView.getItemAtPosition(position);
+                // Déclaration d'une fenêtre (Intent)
+                Intent intent = new Intent(MainActivity.this, PageCocktail.class);      // Passage en paramètre à retourner (le nom du cocktail (PutExtra))
                 intent.putExtra("Position", String.valueOf(position));
                 startActivity(intent);      // Ouverture de la fenêtre (l'activité)
                 Toast.makeText(MainActivity.this, "Cocktail : " + monCocktail, Toast.LENGTH_LONG).show();     //Affichage d'un petit message de durée courte, pour l'utilisateur

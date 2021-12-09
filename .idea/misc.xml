@@ -10,7 +10,10 @@
         <entry key="..\:/Users/Guilhem/Desktop/Dossier de cours/M6 Progammation Android/Kestubois Version bdd fonctionnelle/app/src/main/res/layout/activity_page_cocktail.xml" value="0.1390625" />
         <entry key="..\:/Users/Guilhem/Desktop/Dossier de cours/M6 Progammation Android/Kestubois Version bdd fonctionnelle/app/src/main/res/layout/ligne.xml" value="0.1390625" />
         <entry key="..\:/Users/Guilhem/Desktop/Dossier de cours/M6 Progammation Android/Kestubois Version bdd fonctionnelle/app/src/main/res/layout/ligne_achat.xml" value="0.1390625" />
+        <entry key="..\:/Users/Guilhem/Desktop/Dossier de cours/M6 Progammation Android/Kestubois/app/src/main/res/layout/activity_liste_courses.xml" value="0.23097826086956522" />
+        <entry key="..\:/Users/Guilhem/Desktop/Dossier de cours/M6 Progammation Android/Kestubois/app/src/main/res/layout/activity_page_cocktail.xml" value="0.23097826086956522" />
         <entry key="..\:/Users/Guilhem/Desktop/Dossier de cours/M6 Progammation Android/Kestubois/app/src/main/res/layout/ligne.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/Guilhem/Desktop/Dossier de cours/M6 Progammation Android/Kestubois/app/src/main/res/layout/ligne_achat.xml" value="0.23097826086956522" />
         <entry key="..\:/Users/Guilhem/Desktop/Kestubois Version bdd fonctionnelle/app/src/main/res/layout/activity_liste_courses.xml" value="0.6" />
         <entry key="..\:/Users/Guilhem/Desktop/Kestubois Version bdd fonctionnelle/app/src/main/res/layout/activity_main.xml" value="0.10869565217391304" />
         <entry key="..\:/Users/Guilhem/Desktop/Kestubois Version bdd fonctionnelle/app/src/main/res/layout/activity_page_cocktail.xml" value="0.2" />
@@ -78,5 +81,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.23097826086956522" />
+      </ProjectState>
+    </option>
   </component>
 </project>

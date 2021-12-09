@@ -16,29 +16,25 @@ import java.util.ArrayList;
 
 public class JSONParser {
 
-    //private String url = "http://130.190.119.120/Halcoletmie/index.php";
-    //private String url = "http://192.168.1.15/Halcoletmie/index.php";
-    //private String url = "http://130.190.119.226/Halcoletmie/index.php";
-    //private String url = "http://130.190.118.203/Halcoletmie/index.php";
-    //private String url = "http://192.168.43.210/Halcoletmie/index.php";
     private String url = "http://130.190.117.7/Halcoletmie/index.php";
     private InterfaceController mCallBack ;
 
     public JSONParser(Context context, InterfaceController callBack) {
         this.mCallBack = callBack ;
         Singleton singleton = Singleton.getInstance();
-
+        //Début de la requête http
         RequestQueue queue = Volley.newRequestQueue(context);
         if(!singleton.isLoaded()) {
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {
+                        //On parse la réponse http en Json
                         JSONArray jsonArray = new JSONArray(response);
 
                         ArrayList<TempObject> tempObjects = createTempObject(jsonArray);
                         ArrayList<Integer> idCocktails = new ArrayList<>();
-
+                        //On remplis un tableau d'id de cocktail pour éviter la redondance dans la construction des objets cocktail
                         for (int i = 0; i < tempObjects.size(); i++) {
                             //Si idCocktails ne contiens pas l'id de cocktail en train d'être passé en revu
                             if (!idCocktails.contains(tempObjects.get(i).getIdCocktail())) {
