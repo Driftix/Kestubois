@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Kestubois</string>
+    <string name="retour">RETOUR</string>
+    <string name="ajouter">Ajouter</string>
+    <string name="ajouter_ma_liste">Ajouter à ma liste</string>
+    <string name="ma_liste">Ma liste</string>
+    <string name="o_effectuer_mes_achats">Où effectuer mes achats ?</string>
+    <string name="continuer_ma_s_lection">Continuer ma sélection</string>
+    <string name="plus">+</string>
+    <string name="moins">-</string>
+    <string name="pour">Pour :</string>
+    <string name="title_activity_carte_courses">Map</string>
+    <string name="title_activity_carte_magasin">Map</string>
+</resources>
