@@ -1,4 +1,4 @@
-package com.example.kestubois;
+package com.example.kestubois.classVue;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,21 +12,28 @@ import android.widget.SimpleAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kestubois.classSimple.Ingredient;
+import com.example.kestubois.R;
+import com.example.kestubois.Singleton;
+import com.example.kestubois.classSimple.IngredientExtended;
+import com.example.kestubois.classSimple.ListeDeCourses;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-
-public class ListeCourses extends AppCompatActivity {
+//N'est plus utilisé car on utilise un recyclerView maintenant
+public class PageListeCourses extends AppCompatActivity {
 
     ListView LISTE_achats;
     Button BTN_continuerSelection;
     Button BTN_effectuerAchat;
     Singleton singleton;
+    ListeDeCourses listeDeCourses;
     private int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_liste_courses);
+        setContentView(R.layout.activity_ingredient_layout);
         singleton = Singleton.getInstance();
 
         LISTE_achats = (ListView) findViewById(R.id.LISTE_achats);      // Récupération de l'ID de l'élément
@@ -36,7 +43,7 @@ public class ListeCourses extends AppCompatActivity {
 
 
         //On récupère la liste de course pour l'ajouter à la liste
-        ListeDeCourses listeDeCourses = singleton.getListeDeCourses();
+        this.listeDeCourses = singleton.getListeDeCourses();
 
         for(Ingredient ingredient : listeDeCourses.getIngredients()){
             uneStruc = new HashMap<>();
@@ -48,6 +55,10 @@ public class ListeCourses extends AppCompatActivity {
 
         //J'ai essayé de changer le this.getBaseContext() en this et en ListeCourse.this + getApplicationContext()
         SimpleAdapter adaptateurListe = new SimpleAdapter(this.getBaseContext(), listeItem, R.layout.ligne_achat, new String[]{"Ingredient", "Quantitée"}, new int[]{R.id.LBL_ingredient_achat, R.id.LBL_quantitee_achat});       // Création d'un adaptateur d'affichage dans la liste
+
+
+
+
         LISTE_achats.setAdapter(adaptateurListe);       // Application de l'adaptateur
 
 
@@ -56,31 +67,32 @@ public class ListeCourses extends AppCompatActivity {
         BTN_effectuerAchat = (Button) findViewById(R.id.BTN_effectuerAchat);
         BTN_effectuerAchat.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(ListeCourses.this, CarteMagasin.class);     // Déclaration d'une fenêtre (Intent)
+                Intent intent = new Intent(PageListeCourses.this, PageCarteMagasin.class);     // Déclaration d'une fenêtre (Intent)
                 startActivity(intent);      // Ouverture de la fenêtre (l'activité)
             }
         });
-
 
 
         BTN_continuerSelection = (Button) findViewById(R.id.BTN_continuerSelection);
         BTN_continuerSelection.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(ListeCourses.this, MainActivity.class);     // Déclaration d'une fenêtre (Intent)
+                Intent intent = new Intent(PageListeCourses.this, PageAccueil.class);     // Déclaration d'une fenêtre (Intent)
                 startActivity(intent);      // Ouverture de la fenêtre (l'activité)
             }
         });
 
-        //Ne fonctionne pas mais je ne sais pas encore pourquoi
         LISTE_achats.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                RadioButton radioButton = (RadioButton) view.findViewById(R.id.RadioBTN_achatFait);
-                System.out.println("click");
-                if(!radioButton.isActivated()){
-                    count += 1;
+                IngredientExtended ingredient = listeDeCourses.getIngredients().get(position);
+                if(!ingredient.getIsQuote()){
+                    ingredient.setIsQuote(true);
+                    view.setBackgroundColor(0xFF4DD2AE);
+                    count+=1;
                 }
+                //Ensuite au display faut rafficher en fonction du getQuote
                 if(count == listeItem.size()){
+                    //Faire une fenêtre d'alerte
                     Log.wtf("wtf" , "jai fini");
                 }
             }

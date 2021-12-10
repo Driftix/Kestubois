@@ -1,4 +1,4 @@
-package com.example.kestubois;
+package com.example.kestubois.classVue;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +10,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kestubois.classSimple.Cocktail;
+import com.example.kestubois.InterfaceController;
+import com.example.kestubois.JSONParser;
+import com.example.kestubois.R;
+import com.example.kestubois.Singleton;
+
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity implements InterfaceController{
+public class PageAccueil extends AppCompatActivity implements InterfaceController {
 
     ListView mListView;
     Singleton singleton;
@@ -34,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements InterfaceControll
 
             // Récupération de l'ID de l'élément et application de l'adapteur
             mListView = (ListView) findViewById(R.id.LISTE_cocktail);
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, waitingTabCocktails);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(PageAccueil.this, android.R.layout.simple_list_item_1, waitingTabCocktails);
             mListView.setAdapter(adapter);
 
         }else{
@@ -55,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements InterfaceControll
         }
 
         mListView = (ListView) findViewById(R.id.LISTE_cocktail);       // Récupération de l'ID de l'élément
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, tabCockTails2);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(PageAccueil.this, android.R.layout.simple_list_item_1, tabCockTails2);
         mListView.setAdapter(adapter);
         //On replalce des events sur chacun des items de la liste
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -65,10 +71,10 @@ public class MainActivity extends AppCompatActivity implements InterfaceControll
                 // Déclaration d'un object qui récupère la position (l'élément de la liste)
                 Object monCocktail = mListView.getItemAtPosition(position);
                 // Déclaration d'une fenêtre (Intent)
-                Intent intent = new Intent(MainActivity.this, PageCocktail.class);      // Passage en paramètre à retourner (le nom du cocktail (PutExtra))
+                Intent intent = new Intent(PageAccueil.this, PageDetailCocktail.class);      // Passage en paramètre à retourner (le nom du cocktail (PutExtra))
                 intent.putExtra("Position", String.valueOf(position));
                 startActivity(intent);      // Ouverture de la fenêtre (l'activité)
-                Toast.makeText(MainActivity.this, "Cocktail : " + monCocktail, Toast.LENGTH_LONG).show();     //Affichage d'un petit message de durée courte, pour l'utilisateur
+                Toast.makeText(PageAccueil.this, "Cocktail : " + monCocktail, Toast.LENGTH_LONG).show();     //Affichage d'un petit message de durée courte, pour l'utilisateur
             }
         });
         //On dit au singleton que la liste est construite (pour ne pas refaire de requête à la bdd une autre fois

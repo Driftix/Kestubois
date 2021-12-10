@@ -1,19 +1,21 @@
-package com.example.kestubois;
+package com.example.kestubois.classSimple;
+
+import com.example.kestubois.classSimple.Ingredient;
 
 import java.util.ArrayList;
 
 public class ListeDeCourses {
-    private ArrayList<Ingredient> ingredients;
+    private ArrayList<IngredientExtended> ingredients;
 
     public ListeDeCourses(){
         this.ingredients = new ArrayList<>();
     }
     public void addIngredient(String nom, float quantite){
-        //On vérifie si l'ingrédient existe, s'il existe on met à jour les nouvelles quantités, sinon on rajoute l'ingrédient
-        //Avec le nouvelles quantités
+        //On vérifie si l'ingrédient
+
         boolean exist = false;
         if(ingredients.size() == 0){
-            ingredients.add(new Ingredient(nom,quantite));
+            ingredients.add(new IngredientExtended(nom,quantite));
         }else{
             for(Ingredient ingredient : ingredients){
                 if(ingredient.getNom().equals(nom)){
@@ -22,14 +24,17 @@ public class ListeDeCourses {
                 }
             }
             if(!exist){
-                this.ingredients.add(new Ingredient(nom,quantite));
+                this.ingredients.add(new IngredientExtended(nom,quantite));
             }
         }
     }
-    public void addIngredientTab(ArrayList<Ingredient> ingredients){
+    public void addIngredientTab(ArrayList<IngredientExtended> ingredients){
         this.ingredients = ingredients;
     }
-    public ArrayList<Ingredient> getIngredients(){
+    public void clearListe(){
+        this.ingredients = new ArrayList<IngredientExtended>();
+    }
+    public ArrayList<IngredientExtended> getIngredients(){
         return this.ingredients;
     }
 

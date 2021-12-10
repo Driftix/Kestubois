@@ -1,4 +1,4 @@
-package com.example.kestubois;
+package com.example.kestubois.classSimple;
 
 public class Ingredient {
     private String nom;

@@ -1,4 +1,4 @@
-package com.example.kestubois;
+package com.example.kestubois.classVue;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -13,6 +13,7 @@ import android.os.Bundle;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.kestubois.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -21,7 +22,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class CarteMagasin extends FragmentActivity implements OnMapReadyCallback, LocationListener {
+public class PageCarteMagasin extends FragmentActivity implements OnMapReadyCallback, LocationListener {
 
     private GoogleMap mMap;
     private double mapx;
@@ -46,7 +47,7 @@ public class CarteMagasin extends FragmentActivity implements OnMapReadyCallback
                     .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            ActivityCompat.requestPermissions(CarteMagasin.this,
+                            ActivityCompat.requestPermissions(PageCarteMagasin.this,
                                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
                             initialisatonGPS(locationManager, locationListener);
                         }

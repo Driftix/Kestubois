@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#679865"
-    tools:context=".MainActivity">
+    tools:context=".classVue.PageAccueil">
 
     <ListView
         android:id="@+id/LISTE_cocktail"

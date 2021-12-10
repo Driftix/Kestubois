@@ -1,5 +1,9 @@
 package com.example.kestubois;
 
+import com.example.kestubois.classSimple.Cocktail;
+import com.example.kestubois.classSimple.IngredientExtended;
+import com.example.kestubois.classSimple.ListeDeCourses;
+
 import java.util.ArrayList;
 
 public class Singleton {
@@ -23,7 +27,9 @@ public class Singleton {
     public static Singleton getInstance(){
         return instance;
     }
-
+    public void clearListeDeCourse(){
+        listeDeCourses.clearListe();
+    }
     public void addCocktail(Cocktail cocktail){
         this.cocktailList.add(cocktail);
     }

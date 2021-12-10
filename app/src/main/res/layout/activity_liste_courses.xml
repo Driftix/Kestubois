@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#679865"
     android:textAlignment="center"
-    tools:context=".ListeCourses">
+    tools:context=".classVue.PageListeCourses">
 
     <TextView
         android:id="@+id/LBL_titreListe"
@@ -53,6 +53,7 @@
         android:text="@string/o_effectuer_mes_achats"
         app:layout_constraintBottom_toTopOf="@+id/BTN_continuerSelection"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -61,11 +62,12 @@
         android:layout_height="48dp"
         android:layout_marginStart="53dp"
         android:layout_marginEnd="54dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginBottom="16dp"
         android:background="#4E342E"
         android:fontFamily="@font/aclonica"
         android:text="@string/continuer_ma_s_lection"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

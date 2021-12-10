@@ -1,4 +1,4 @@
-package com.example.kestubois;
+package com.example.kestubois.classVue;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +12,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kestubois.classSimple.Cocktail;
+import com.example.kestubois.classSimple.Ingredient;
+import com.example.kestubois.R;
+import com.example.kestubois.Singleton;
+import com.example.kestubois.classSimple.ListeDeCourses;
+import com.example.kestubois.recyclerView.InGredientListActivity;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class PageCocktail extends AppCompatActivity {
+public class PageDetailCocktail extends AppCompatActivity {
 
 
     private Button BTN_retour;
@@ -78,7 +85,7 @@ public class PageCocktail extends AppCompatActivity {
         BTN_retour = (Button) findViewById(R.id.BTN_retour);
         BTN_retour.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), MainActivity.class);
+                Intent myIntent = new Intent(view.getContext(), PageAccueil.class);
                 startActivity(myIntent);
             }
         });
@@ -93,11 +100,10 @@ public class PageCocktail extends AppCompatActivity {
 
                 //Ajout des ingrédients du cocktail actual avec les bonnes quantités à la liste de course
                 for(Ingredient ingredient : cocktailActuel.getIngredients()) {
-                    System.out.println("on passe dans le truc cool");
                     listeDeCourses.addIngredient(ingredient.getNom(), ingredient.getQuantite() * quant);
                 }
 
-                Intent myIntent = new Intent(view.getContext(), ListeCourses.class);    // Déclaration d'une fenêtre (Intent)
+                Intent myIntent = new Intent(view.getContext(), InGredientListActivity.class);    // Déclaration d'une fenêtre (Intent)
                 startActivity(myIntent);        // Ouverture de la fenêtre (l'activité)
 
             }
@@ -113,7 +119,7 @@ public class PageCocktail extends AppCompatActivity {
                 uneQuant = String.valueOf(quant);
                 TEXT_nbr_pers.setText(uneQuant);
                 if (quant == 100){
-                    Toast.makeText(PageCocktail.this, "Le nombre de personne est trop gros, bande d'alcoolique !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PageDetailCocktail.this, "Le nombre de personne est trop gros, bande d'alcoolique !", Toast.LENGTH_LONG).show();
                     quant = 99;
                     uneQuant = String.valueOf(quant);
                     TEXT_nbr_pers.setText(uneQuant);
@@ -128,7 +134,7 @@ public class PageCocktail extends AppCompatActivity {
                 uneQuant = String.valueOf(quant);
                 TEXT_nbr_pers.setText(uneQuant);
                 if (quant == 0){
-                    Toast.makeText(PageCocktail.this, "Le nombre de personne est trop bas, tu vas pas faire un cocktail pour casper !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PageDetailCocktail.this, "Le nombre de personne est trop bas, tu vas pas faire un cocktail pour casper !", Toast.LENGTH_LONG).show();
                     quant = 1;
                     uneQuant = String.valueOf(quant);
                     TEXT_nbr_pers.setText(uneQuant);
@@ -150,7 +156,7 @@ public class PageCocktail extends AppCompatActivity {
             updatedQuant.add(hashMapIngredients);
         }
 
-        SimpleAdapter adapteurListNew = new SimpleAdapter(PageCocktail.this, updatedQuant, R.layout.ligne, new String[]{"Ingredient", "Quantitée"}, new int[]{R.id.LBL_ingredient_liste, R.id.LBL_quantitee_liste});
+        SimpleAdapter adapteurListNew = new SimpleAdapter(PageDetailCocktail.this, updatedQuant, R.layout.ligne, new String[]{"Ingredient", "Quantitée"}, new int[]{R.id.LBL_ingredient_liste, R.id.LBL_quantitee_liste});
         LISTE_ingredient.setAdapter(adapteurListNew);
 
     }

@@ -35,11 +35,13 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".CarteMagasin"
+            android:name=".classVue.PageCarteMagasin"
             android:label="@string/title_activity_carte_magasin"></activity>
-        <activity android:name=".ListeCourses" />
-        <activity android:name=".PageCocktail" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".classVue.PageListeCourses" />
+        <activity android:name=".classVue.PageDetailCocktail" />
+        <activity android:name=".recyclerView.InGredientListActivity" />
+        <activity android:name=".classVue.PageAccueil">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

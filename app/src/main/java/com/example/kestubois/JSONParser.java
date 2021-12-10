@@ -8,6 +8,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.kestubois.classSimple.Cocktail;
+import com.example.kestubois.classSimple.Ingredient;
+import com.example.kestubois.classSimple.TempObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
