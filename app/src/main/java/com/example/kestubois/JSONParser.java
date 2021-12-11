@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class JSONParser {
 
-    private String url = "http://130.190.117.7/Halcoletmie/index.php";
+    private String url = "http://192.168.1.33/Halcoletmie/index.php";
     private InterfaceController mCallBack ;
 
     public JSONParser(Context context, InterfaceController callBack) {
